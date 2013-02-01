@@ -6,8 +6,11 @@
 #     zle reset-prompt
 # }
 # zle -N zle-keymap-select
+function virtualenv_info {
+    [ $VIRTUAL_ENV ] && echo '['`basename $VIRTUAL_ENV`'] '
+}
 
-PROMPT=$'%{$fg[blue]%}%~%{$reset_color%} $(git_prompt_info)%{$fg[gray]%}[%n@%m]%{$reset_color%} %{$fg[gray]%}[%T]% %{$fg[green]%}${VIMODE} %{$reset_color%}
+PROMPT=$'%{$fg[blue]%}%~%{$reset_color%} %{$fg[magenta]%}$(virtualenv_info)%{$reset_color%}$(git_prompt_info)%{$fg[gray]%}[%n@%m]%{$reset_color%} %{$fg[gray]%}[%T]% %{$fg[green]%}${VIMODE} %{$reset_color%}
 %{$fg[gray]%}>%{$reset_color%} '
 
 PROMPT2="%{$fg[gray]%}%_> %{$reset_color%}"
